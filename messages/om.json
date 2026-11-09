@@ -44,7 +44,8 @@
       "vacant": "Balbala {label}, duwwaa"
     },
     "lateLine": "{name}, balbala {label}",
-    "lateAmount": "barfate {amount}"
+    "lateAmount": "barfate {amount}",
+    "loadDemo": "Kiraa agarsiisaa fe'i"
   },
   "late": {
     "title": "Kiraa barfate",
@@ -181,7 +182,9 @@
     "unit_not_found": "Balballi kun hin argamu.",
     "unit_occupied": "Balballi kun kireeffameera.",
     "lease_not_found": "Kireen hin argamne.",
-    "lease_not_active": "Kireen kun duraan xumurameera."
+    "lease_not_active": "Kireen kun duraan xumurameera.",
+    "not_demo_tenant": "Daataan agarsiisaa herrega agarsiisaa qofatti fe'ama.",
+    "already_loaded": "Daataan agarsiisaa duraan fe'ameera."
   },
   "methods": {
     "cash": "Maallaqa",

@@ -44,7 +44,8 @@
       "vacant": "በር {label}፣ ባዶ"
     },
     "lateLine": "{name}፣ በር {label}",
-    "lateAmount": "ዘግይቷል {amount}"
+    "lateAmount": "ዘግይቷል {amount}",
+    "loadDemo": "የማሳያ ኪራዮችን ጫን"
   },
   "late": {
     "title": "የዘገየ ኪራይ",
@@ -181,7 +182,9 @@
     "unit_not_found": "ይህ በር አይገኝም።",
     "unit_occupied": "ይህ በር ተከራይቷል።",
     "lease_not_found": "ኪራዩ አልተገኘም።",
-    "lease_not_active": "ይህ ኪራይ አስቀድሞ አብቅቷል።"
+    "lease_not_active": "ይህ ኪራይ አስቀድሞ አብቅቷል።",
+    "not_demo_tenant": "የማሳያ መረጃ በማሳያ መለያ ብቻ ይጫናል።",
+    "already_loaded": "የማሳያ መረጃው አስቀድሞ ተጭኗል።"
   },
   "methods": {
     "cash": "ጥሬ ገንዘብ",

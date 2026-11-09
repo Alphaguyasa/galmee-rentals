@@ -309,3 +309,9 @@ export async function closeClientRequest(id: string): Promise<Result> {
   const { error } = await supabase.from("rn_client_requests").update({ status: "closed" }).eq("id", id);
   return error ? fail(error) : { ok: true, data: undefined };
 }
+
+export async function loadDemoData(): Promise<Result> {
+  const supabase = await createClient();
+  const { error } = await supabase.rpc("rn_load_demo");
+  return error ? fail(error) : { ok: true, data: undefined };
+}

@@ -43,7 +43,7 @@
 
 ## M4: Demo ready
 
-- [ ] Demo tenant "Galmee Rentals Demo" with data: 4 properties, 30 units, 25 leases, 3 months of rent history
+- [ ] Demo tenant "Galmee Rentals Demo" with data (one-tap loader is in the app; the demo account itself must be created first): 4 properties, 30 units, 25 leases, 3 months of rent history
 - [ ] Demo login documented in the decision log for Alpha (password set by Alpha, never committed)
 - [ ] 5-minute demo path works on a phone in airplane mode for the main action
 - [ ] Amharic and Afaan Oromo text reviewed list in the decision log for Alpha (native speaker)

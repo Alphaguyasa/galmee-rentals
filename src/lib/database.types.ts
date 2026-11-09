@@ -5308,6 +5308,7 @@ export type Database = {
         Returns: undefined
       }
       rn_generate_invoices: { Args: never; Returns: number }
+      rn_load_demo: { Args: never; Returns: undefined }
       rn_record_payment: {
         Args: {
           p_amount: number

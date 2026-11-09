@@ -44,7 +44,8 @@
       "vacant": "Door {label}, vacant"
     },
     "lateLine": "{name}, door {label}",
-    "lateAmount": "late {amount}"
+    "lateAmount": "late {amount}",
+    "loadDemo": "Load demo rentals"
   },
   "late": {
     "title": "Late rent",
@@ -181,7 +182,9 @@
     "unit_not_found": "That door is not available.",
     "unit_occupied": "Someone already rents this door.",
     "lease_not_found": "Rental not found.",
-    "lease_not_active": "This rental has already ended."
+    "lease_not_active": "This rental has already ended.",
+    "not_demo_tenant": "Demo data can only be loaded in the demo account.",
+    "already_loaded": "The demo data is already loaded."
   },
   "methods": {
     "cash": "Cash",

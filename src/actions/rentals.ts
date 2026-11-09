@@ -128,3 +128,11 @@ export async function closeRequestAction(_prev: ActionState, formData: FormData)
   revalidatePath("/broker");
   return { done: true };
 }
+
+export async function loadDemoDataAction(): Promise<ActionState> {
+  await requireLogin();
+  const result = await rentals.loadDemoData();
+  if (!result.ok) return { error: result.error };
+  refreshAll();
+  return { done: true };
+}

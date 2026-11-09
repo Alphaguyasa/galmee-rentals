@@ -1,6 +1,8 @@
 import Link from "next/link";
 import { getLocale, getTranslations } from "next-intl/server";
 import { Plus, Search } from "lucide-react";
+import { loadDemoDataAction } from "@/actions/rentals";
+import { ActionForm } from "@/components/rentals/action-form";
 import { Door, type DoorState } from "@/components/rentals/door";
 import { buttonVariants } from "@/components/ui/button";
 import { Label } from "@/components/ui/label";
@@ -12,6 +14,7 @@ import { getSession } from "@/server/dal/session";
 import { searchParam } from "@/server/validation";
 
 const FILTERS: UnitFilter[] = ["all", "vacant", "late"];
+const DEMO_TENANT = "Galmee Rentals Demo";
 
 function doorState(u: UnitRow): DoorState {
   if (!u.leaseId) return "vacant";
@@ -23,7 +26,7 @@ export default async function DoorsPage({ searchParams }: { searchParams: Promis
   const parsed = searchParam.safeParse(q ?? "");
   const query = parsed.success ? parsed.data : "";
   const filter: UnitFilter = FILTERS.includes(show as UnitFilter) ? (show as UnitFilter) : "all";
-  const [t, locale, units, allUnits, properties, { profile }] = await Promise.all([
+  const [t, locale, units, allUnits, properties, { profile, tenant }] = await Promise.all([
     getTranslations("doors"),
     getLocale() as Promise<Locale>,
     listUnits(query, filter),
@@ -107,6 +110,7 @@ export default async function DoorsPage({ searchParams }: { searchParams: Promis
               {t("addFirst")}
             </Link>
           ) : null}
+          {!query && filter === "all" && canManage && tenant.name === DEMO_TENANT ? <ActionForm action={loadDemoDataAction} submitLabel={t("loadDemo")} variant="outline" /> : null}
         </div>
       ) : (
         <div className="grid gap-6">
