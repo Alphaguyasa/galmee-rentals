@@ -1,0 +1,192 @@
+{
+  "app": {
+    "name": "Galmee Rentals",
+    "tagline": "Stop chasing rent: tenants are reminded automatically and you see who is late."
+  },
+  "nav": {
+    "menu": "Main menu",
+    "home": "Doors",
+    "late": "Late",
+    "rent": "Rent",
+    "settings": "Setup"
+  },
+  "unitKinds": {
+    "room": "Room",
+    "apartment": "Apartment",
+    "house": "House",
+    "shop": "Shop",
+    "office": "Office"
+  },
+  "doors": {
+    "search": "Search tenant, phone or door",
+    "searchAction": "Search",
+    "filter": "Show",
+    "letCount": "{let} of {total} doors rented",
+    "lateSummary": "{count} late, {amount}",
+    "noneLate": "Nobody is late",
+    "filters": {
+      "all": "All",
+      "vacant": "Vacant",
+      "late": "Late"
+    },
+    "empty": {
+      "all": "No properties yet. Add your first property.",
+      "vacant": "Every door is rented.",
+      "late": "Nobody is late."
+    },
+    "noMatch": "Nothing matches that search.",
+    "addFirst": "Add a property",
+    "noUnits": "No doors added yet. Add them in Setup.",
+    "door": {
+      "occupied": "Door {label}, {name}, paid up",
+      "late": "Door {label}, {name}, late",
+      "vacant": "Door {label}, vacant"
+    },
+    "lateLine": "{name}, door {label}",
+    "lateAmount": "late {amount}"
+  },
+  "late": {
+    "title": "Late rent",
+    "total": "{amount} late",
+    "empty": "Nobody is late.",
+    "where": "{property}, door {unit}",
+    "since": "Since {date}, {days} days, {months, plural, one {# month} other {# months}}",
+    "call": "Call {phone}"
+  },
+  "moveIn": {
+    "title": "Move a tenant into door {label}",
+    "name": "Tenant name",
+    "phone": "Phone number",
+    "start": "Move-in date",
+    "rent": "Monthly rent",
+    "dueDay": "Rent due day of the Ethiopian month (1-30)",
+    "deposit": "Deposit held",
+    "submit": "Start rental",
+    "managerOnly": "Only an owner or manager can start a rental."
+  },
+  "lease": {
+    "where": "{property}, door {unit}",
+    "ended": "ended {date}",
+    "late": "Late",
+    "owes": "Owes in total",
+    "rent": "Monthly rent",
+    "nextDue": "Next due",
+    "nothingDue": "Nothing due",
+    "prepaid": "Prepaid",
+    "deposit": "Deposit held",
+    "takeRent": "Take rent",
+    "amount": "Amount",
+    "method": "Paid by",
+    "reference": "Reference (optional)",
+    "record": "Record rent",
+    "recorded": "Rent recorded.",
+    "advanceNote": "Pays the oldest month first. Anything over what is owed is kept as prepaid rent for next months.",
+    "schedule": "Rent schedule",
+    "noInvoices": "No rent billed yet.",
+    "dueOn": "Due {date}",
+    "states": {
+      "paid": "Paid",
+      "late": "Late, {amount} left",
+      "part": "Part paid, {amount} left",
+      "due": "Not yet due"
+    },
+    "payments": "Payments",
+    "endTitle": "End this rental",
+    "endNote": "The door becomes vacant. Rent already due stays owed; unpaid rent after the end date is cancelled.",
+    "endDate": "Last day",
+    "end": "End rental",
+    "back": "Back to doors"
+  },
+  "rent": {
+    "monthNav": "Month",
+    "thisMonth": "This month",
+    "summary": "Collected {collected} of {billed}",
+    "empty": "No rent billed this month.",
+    "dueOn": "Due {date}",
+    "paid": "Paid",
+    "late": "Late, {amount}",
+    "owes": "Owes {amount}",
+    "bill": "Bill this month",
+    "billed": "Rent billed for every active rental."
+  },
+  "settings": {
+    "title": "Setup",
+    "properties": "Properties",
+    "noProperties": "No properties yet.",
+    "addProperty": "Add property",
+    "propertyName": "Property name",
+    "address": "Address",
+    "units": "Doors (rooms, shops, houses)",
+    "addUnit": "Add door",
+    "property": "Property",
+    "unitLabel": "Door number or name",
+    "kind": "Type",
+    "monthlyRent": "Monthly rent",
+    "added": "Added."
+  },
+  "common": {
+    "language": "Language",
+    "offline": "You are offline",
+    "offlineBody": "Galmee will reconnect automatically.",
+    "retry": "Try again",
+    "today": "Today",
+    "skipToContent": "Skip to content"
+  },
+  "roles": {
+    "owner": "Owner",
+    "manager": "Manager",
+    "staff": "Rent collector"
+  },
+  "auth": {
+    "loginTitle": "Log in",
+    "signupTitle": "Create your account",
+    "email": "Email",
+    "password": "Password",
+    "passwordHint": "At least 10 characters",
+    "login": "Log in",
+    "signup": "Create account",
+    "logout": "Log out",
+    "noAccount": "New here?",
+    "haveAccount": "Already have an account?",
+    "checkEmail": "Check your email and open the link to confirm your account, then log in.",
+    "errorInvalid": "Wrong email or password.",
+    "errorGeneric": "Something went wrong. Please try again.",
+    "errorPassword": "Password must be at least 10 characters.",
+    "errorEmail": "Enter a valid email address."
+  },
+  "onboarding": {
+    "title": "Set up your rentals",
+    "intro": "Name your business to start your own rent book.",
+    "fullName": "Your full name",
+    "phone": "Phone number",
+    "submit": "Start using Galmee",
+    "error": "Could not create the account. Please try again.",
+    "errorPhone": "Enter an Ethiopian phone number, for example 0911 234 567.",
+    "errorRequired": "Fill in all three fields.",
+    "businessName": "Business or owner name"
+  },
+  "errors": {
+    "generic": "Something went wrong. Please try again.",
+    "load": "This page could not load. Check your connection and try again.",
+    "form": "Check the form and try again.",
+    "phone": "Enter an Ethiopian phone number, for example 0911 234 567.",
+    "not_allowed": "Your role cannot do this. Ask a manager.",
+    "bad_amount": "Enter a valid amount.",
+    "name_required": "Enter the tenant name.",
+    "bad_date": "Enter a valid date.",
+    "name_taken": "That name is already in the list.",
+    "overpayment": "That is more than the balance.",
+    "bad_due_day": "Enter a due day from 1 to 30.",
+    "unit_not_found": "That door is not available.",
+    "unit_occupied": "Someone already rents this door.",
+    "lease_not_found": "Rental not found.",
+    "lease_not_active": "This rental has already ended."
+  },
+  "methods": {
+    "cash": "Cash",
+    "telebirr": "Telebirr",
+    "cbe_birr": "CBE Birr",
+    "bank": "Bank transfer",
+    "other": "Other"
+  }
+}

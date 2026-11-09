@@ -1,0 +1,89 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:is(.dark *));
+
+:root {
+  /* Palette: see docs/DESIGN.md */
+  --gate: #0f4c5c; /* dominant: painted compound gates, header, primary action */
+  --limewash: #eef2f1; /* page background */
+  --rule: #cbd5d3; /* rules, borders */
+  --key: #a56a00; /* brass key: rent due soon, prepaid */
+  --late: #b3261e; /* late rent, errors */
+  --ink: #142326; /* text */
+
+  --radius: 0.375rem;
+  --background: var(--limewash);
+  --foreground: var(--ink);
+  --card: #ffffff;
+  --card-foreground: var(--ink);
+  --primary: var(--gate);
+  --primary-foreground: #ffffff;
+  --secondary: #dfe7e5;
+  --secondary-foreground: var(--ink);
+  --muted: #dfe7e5;
+  --muted-foreground: #46595c;
+  --accent: #d6e6e8;
+  --accent-foreground: #0c3a46;
+  --destructive: var(--late);
+  --warning: var(--key);
+  --border: var(--rule);
+  --input: #93a5a6;
+  --ring: var(--gate);
+}
+
+@theme inline {
+  --font-sans: var(--font-latin), var(--font-ethiopic), system-ui, sans-serif;
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-warning: var(--warning);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  html {
+    -webkit-tap-highlight-color: transparent;
+  }
+  a,
+  button,
+  input,
+  label {
+    touch-action: manipulation;
+  }
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+    font-size: 1rem;
+    line-height: 1.5;
+  }
+  /* Money, quantities and dates line up in columns. */
+  .num {
+    font-variant-numeric: tabular-nums;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      transition-duration: 0.01ms !important;
+      animation-duration: 0.01ms !important;
+    }
+  }
+}

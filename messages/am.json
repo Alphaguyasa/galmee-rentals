@@ -1,0 +1,192 @@
+{
+  "app": {
+    "name": "ገልሜ ኪራይ",
+    "tagline": "ኪራይ ማሳደድ ይብቃ፦ ተከራዮች በራስ-ሰር ይታወሳሉ፣ የዘገየውን ያያሉ።"
+  },
+  "nav": {
+    "menu": "ዋና ማውጫ",
+    "home": "በሮች",
+    "late": "የዘገዩ",
+    "rent": "ኪራይ",
+    "settings": "ቅንብር"
+  },
+  "unitKinds": {
+    "room": "ክፍል",
+    "apartment": "አፓርታማ",
+    "house": "ቤት",
+    "shop": "ሱቅ",
+    "office": "ቢሮ"
+  },
+  "doors": {
+    "search": "ተከራይ፣ ስልክ ወይም በር ይፈልጉ",
+    "searchAction": "ፈልግ",
+    "filter": "አሳይ",
+    "letCount": "ከ{total} በሮች {let} ተከራይተዋል",
+    "lateSummary": "{count} የዘገዩ፣ {amount}",
+    "noneLate": "የዘገየ የለም",
+    "filters": {
+      "all": "ሁሉም",
+      "vacant": "ባዶ",
+      "late": "የዘገዩ"
+    },
+    "empty": {
+      "all": "እስካሁን ንብረት የለም። የመጀመሪያ ንብረትዎን ያክሉ።",
+      "vacant": "ሁሉም በሮች ተከራይተዋል።",
+      "late": "የዘገየ የለም።"
+    },
+    "noMatch": "የሚዛመድ አልተገኘም።",
+    "addFirst": "ንብረት ያክሉ",
+    "noUnits": "በሮች አልተጨመሩም። በቅንብር ውስጥ ያክሉ።",
+    "door": {
+      "occupied": "በር {label}፣ {name}፣ ከፍሏል",
+      "late": "በር {label}፣ {name}፣ ዘግይቷል",
+      "vacant": "በር {label}፣ ባዶ"
+    },
+    "lateLine": "{name}፣ በር {label}",
+    "lateAmount": "ዘግይቷል {amount}"
+  },
+  "late": {
+    "title": "የዘገየ ኪራይ",
+    "total": "{amount} ዘግይቷል",
+    "empty": "የዘገየ የለም።",
+    "where": "{property}፣ በር {unit}",
+    "since": "ከ{date} ጀምሮ፣ {days} ቀን፣ {months} ወር",
+    "call": "{phone} ይደውሉ"
+  },
+  "moveIn": {
+    "title": "በር {label} ላይ ተከራይ ያስገቡ",
+    "name": "የተከራይ ስም",
+    "phone": "ስልክ ቁጥር",
+    "start": "የመግቢያ ቀን",
+    "rent": "ወርሃዊ ኪራይ",
+    "dueDay": "የኪራይ መክፈያ ቀን በኢትዮጵያ ወር (1-30)",
+    "deposit": "የተያዘ ተቀማጭ",
+    "submit": "ኪራይ ይጀምሩ",
+    "managerOnly": "ኪራይ መጀመር የሚችለው ባለቤት ወይም ሥራ አስኪያጅ ብቻ ነው።"
+  },
+  "lease": {
+    "where": "{property}፣ በር {unit}",
+    "ended": "{date} አብቅቷል",
+    "late": "የዘገየ",
+    "owes": "ጠቅላላ ዕዳ",
+    "rent": "ወርሃዊ ኪራይ",
+    "nextDue": "ቀጣይ ክፍያ",
+    "nothingDue": "ክፍያ የለም",
+    "prepaid": "በቅድሚያ የተከፈለ",
+    "deposit": "የተያዘ ተቀማጭ",
+    "takeRent": "ኪራይ ይቀበሉ",
+    "amount": "መጠን",
+    "method": "የክፍያ ዘዴ",
+    "reference": "ማጣቀሻ (ካለ)",
+    "record": "ኪራይ መዝግብ",
+    "recorded": "ኪራይ ተመዝግቧል።",
+    "advanceNote": "መጀመሪያ የቆየውን ወር ይከፍላል። ከዕዳ በላይ የሆነው ለቀጣይ ወራት በቅድሚያ ክፍያ ይያዛል።",
+    "schedule": "የኪራይ መርሐ ግብር",
+    "noInvoices": "እስካሁን ኪራይ አልተጠየቀም።",
+    "dueOn": "የሚከፈልበት {date}",
+    "states": {
+      "paid": "ተከፍሏል",
+      "late": "ዘግይቷል፣ {amount} ቀሪ",
+      "part": "በከፊል ተከፍሏል፣ {amount} ቀሪ",
+      "due": "ገና አልደረሰም"
+    },
+    "payments": "ክፍያዎች",
+    "endTitle": "ኪራዩን ያቁሙ",
+    "endNote": "በሩ ባዶ ይሆናል። የደረሰ ኪራይ ዕዳ ሆኖ ይቆያል፤ ከማብቂያ ቀን በኋላ ያልተከፈለ ኪራይ ይሰረዛል።",
+    "endDate": "የመጨረሻ ቀን",
+    "end": "ኪራይ አቁም",
+    "back": "ወደ በሮች ተመለስ"
+  },
+  "rent": {
+    "monthNav": "ወር",
+    "thisMonth": "ይህ ወር",
+    "summary": "ከ{billed} {collected} ተሰብስቧል",
+    "empty": "በዚህ ወር ኪራይ አልተጠየቀም።",
+    "dueOn": "የሚከፈልበት {date}",
+    "paid": "ተከፍሏል",
+    "late": "ዘግይቷል፣ {amount}",
+    "owes": "ዕዳ {amount}",
+    "bill": "የዚህን ወር ኪራይ ጠይቅ",
+    "billed": "ለሁሉም ኪራዮች ተጠይቋል።"
+  },
+  "settings": {
+    "title": "ቅንብር",
+    "properties": "ንብረቶች",
+    "noProperties": "እስካሁን ንብረት የለም።",
+    "addProperty": "ንብረት ያክሉ",
+    "propertyName": "የንብረት ስም",
+    "address": "አድራሻ",
+    "units": "በሮች (ክፍሎች፣ ሱቆች፣ ቤቶች)",
+    "addUnit": "በር ያክሉ",
+    "property": "ንብረት",
+    "unitLabel": "የበር ቁጥር ወይም ስም",
+    "kind": "ዓይነት",
+    "monthlyRent": "ወርሃዊ ኪራይ",
+    "added": "ተጨምሯል።"
+  },
+  "common": {
+    "language": "ቋንቋ",
+    "offline": "ከኢንተርኔት ውጭ ነዎት",
+    "offlineBody": "ገልሜ በራሱ እንደገና ይገናኛል።",
+    "retry": "እንደገና ይሞክሩ",
+    "today": "ዛሬ",
+    "skipToContent": "ወደ ይዘቱ ይዝለሉ"
+  },
+  "roles": {
+    "owner": "ባለቤት",
+    "manager": "ሥራ አስኪያጅ",
+    "staff": "ኪራይ ሰብሳቢ"
+  },
+  "auth": {
+    "loginTitle": "ይግቡ",
+    "signupTitle": "መለያዎን ይፍጠሩ",
+    "email": "ኢሜይል",
+    "password": "የይለፍ ቃል",
+    "passwordHint": "ቢያንስ 10 ፊደላት",
+    "login": "ይግቡ",
+    "signup": "መለያ ይፍጠሩ",
+    "logout": "ይውጡ",
+    "noAccount": "አዲስ ነዎት?",
+    "haveAccount": "መለያ አለዎት?",
+    "checkEmail": "ኢሜይልዎን ከፍተው መለያዎን ለማረጋገጥ ሊንኩን ይጫኑ፣ ከዚያ ይግቡ።",
+    "errorInvalid": "ኢሜይል ወይም የይለፍ ቃል ተሳስቷል።",
+    "errorGeneric": "ችግር ተፈጥሯል። እባክዎ እንደገና ይሞክሩ።",
+    "errorPassword": "የይለፍ ቃል ቢያንስ 10 ፊደላት መሆን አለበት።",
+    "errorEmail": "ትክክለኛ ኢሜይል ያስገቡ።"
+  },
+  "onboarding": {
+    "title": "ኪራይዎን ያዘጋጁ",
+    "intro": "የኪራይ መዝገብዎን ለመጀመር የንግድዎን ስም ያስገቡ።",
+    "fullName": "ሙሉ ስምዎ",
+    "phone": "ስልክ ቁጥር",
+    "submit": "ገልሜን መጠቀም ይጀምሩ",
+    "error": "መለያውን መፍጠር አልተቻለም። እባክዎ እንደገና ይሞክሩ።",
+    "errorPhone": "የኢትዮጵያ ስልክ ቁጥር ያስገቡ፤ ለምሳሌ 0911 234 567።",
+    "errorRequired": "ሦስቱንም መስኮች ይሙሉ።",
+    "businessName": "የንግድ ወይም የባለቤት ስም"
+  },
+  "errors": {
+    "generic": "ችግር ተፈጥሯል። እባክዎ እንደገና ይሞክሩ።",
+    "load": "ገጹ አልተጫነም። ግንኙነትዎን አረጋግጠው እንደገና ይሞክሩ።",
+    "form": "ቅጹን አረጋግጠው እንደገና ይሞክሩ።",
+    "phone": "የኢትዮጵያ ስልክ ቁጥር ያስገቡ፤ ለምሳሌ 0911 234 567።",
+    "not_allowed": "የእርስዎ ሚና ይህን አይፈቅድም። ሥራ አስኪያጅ ይጠይቁ።",
+    "bad_amount": "ትክክለኛ መጠን ያስገቡ።",
+    "name_required": "የተከራዩን ስም ያስገቡ።",
+    "bad_date": "ትክክለኛ ቀን ያስገቡ።",
+    "name_taken": "ያ ስም ዝርዝሩ ውስጥ አለ።",
+    "overpayment": "ይህ ከቀሪው ይበልጣል።",
+    "bad_due_day": "የመክፈያ ቀን ከ1 እስከ 30 ያስገቡ።",
+    "unit_not_found": "ይህ በር አይገኝም።",
+    "unit_occupied": "ይህ በር ተከራይቷል።",
+    "lease_not_found": "ኪራዩ አልተገኘም።",
+    "lease_not_active": "ይህ ኪራይ አስቀድሞ አብቅቷል።"
+  },
+  "methods": {
+    "cash": "ጥሬ ገንዘብ",
+    "telebirr": "ቴሌብር",
+    "cbe_birr": "ሲቢኢ ብር",
+    "bank": "በባንክ",
+    "other": "ሌላ"
+  }
+}
