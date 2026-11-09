@@ -8,7 +8,8 @@
     "home": "Doors",
     "late": "Late",
     "rent": "Rent",
-    "settings": "Setup"
+    "settings": "Setup",
+    "broker": "Broker"
   },
   "unitKinds": {
     "room": "Room",
@@ -188,5 +189,47 @@
     "cbe_birr": "CBE Birr",
     "bank": "Bank transfer",
     "other": "Other"
+  },
+  "listingKinds": {
+    "room": "Room",
+    "apartment": "Apartment",
+    "house": "House",
+    "shop": "Shop",
+    "office": "Office",
+    "land": "Land"
+  },
+  "broker": {
+    "title": "Broker",
+    "requests": "Clients looking",
+    "noRequests": "No clients yet. Add a client to see matching listings.",
+    "matches": "{count, plural, one {# listing fits} other {# listings fit}}",
+    "noMatch": "Nothing fits yet.",
+    "wants": "Up to {price}",
+    "minBedrooms": "{count}+ bedrooms",
+    "listings": "Listings",
+    "noListings": "No listings yet. Add the first one.",
+    "bedrooms": "{count} bedrooms",
+    "owner": "Owner: {name}",
+    "close": "Close",
+    "addRequest": "Add client",
+    "addListing": "Add listing",
+    "added": "Added.",
+    "clientName": "Client name",
+    "phone": "Phone number",
+    "deal": "For",
+    "kindAny": "Any type",
+    "kind": "Type",
+    "area": "Area",
+    "minBedroomsField": "Bedrooms at least",
+    "maxPrice": "Highest price",
+    "title_": "Listing title",
+    "bedroomsField": "Bedrooms",
+    "price": "Price",
+    "ownerName": "Owner name",
+    "ownerPhone": "Owner phone",
+    "deals": {
+      "rent": "Rent",
+      "sale": "Sale"
+    }
   }
 }

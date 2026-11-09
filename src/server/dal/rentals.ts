@@ -243,3 +243,69 @@ export async function listMonth(year: number, month: number): Promise<MonthRow[]
     propertyName: i.property_name!,
   }));
 }
+
+export type ListingRow = { id: string; title: string; deal: string; kind: string; area: string | null; bedrooms: number | null; price: number; ownerName: string | null; ownerPhone: string | null };
+export type RequestRow = { id: string; clientName: string; clientPhone: string | null; deal: string; kind: string | null; area: string | null; minBedrooms: number | null; maxPrice: number; matches: ListingRow[] };
+
+const LISTING_COLUMNS = "id, title, deal, kind, area, bedrooms, price, owner_name, owner_phone";
+
+export async function listBroker(): Promise<{ listings: ListingRow[]; requests: RequestRow[] }> {
+  const supabase = await createClient();
+  const [listings, requests, matches] = await Promise.all([
+    supabase.from("rn_listings").select(LISTING_COLUMNS).eq("status", "open").order("created_at", { ascending: false }).limit(200),
+    supabase.from("rn_client_requests").select("id, client_name, client_phone, deal, kind, area, min_bedrooms, max_price").eq("status", "open").order("created_at", { ascending: false }).limit(200),
+    supabase.from("rn_listing_matches").select("request_id, listing_id").limit(1000),
+  ]);
+  if (listings.error) throw listings.error;
+  if (requests.error) throw requests.error;
+  if (matches.error) throw matches.error;
+  const rows: ListingRow[] = listings.data.map((l) => ({ id: l.id, title: l.title, deal: l.deal, kind: l.kind, area: l.area, bedrooms: l.bedrooms, price: l.price, ownerName: l.owner_name, ownerPhone: l.owner_phone }));
+  const byId = new Map(rows.map((l) => [l.id, l]));
+  return {
+    listings: rows,
+    requests: requests.data.map((r) => ({
+      id: r.id,
+      clientName: r.client_name,
+      clientPhone: r.client_phone,
+      deal: r.deal,
+      kind: r.kind,
+      area: r.area,
+      minBedrooms: r.min_bedrooms,
+      maxPrice: r.max_price,
+      matches: matches.data.filter((m) => m.request_id === r.id).flatMap((m) => {
+        const hit = byId.get(m.listing_id!);
+        return hit ? [hit] : [];
+      }),
+    })),
+  };
+}
+
+export async function addListing(input: { title: string; deal: string; kind: string; area?: string; bedrooms?: number; price: number; ownerName?: string; ownerPhone?: string }): Promise<Result> {
+  const supabase = await createClient();
+  const { error } = await supabase.from("rn_listings").insert({
+    title: input.title, deal: input.deal, kind: input.kind, area: input.area ?? null, bedrooms: input.bedrooms ?? null, price: input.price,
+    owner_name: input.ownerName ?? null, owner_phone: input.ownerPhone ?? null,
+  });
+  return error ? fail(error) : { ok: true, data: undefined };
+}
+
+export async function addClientRequest(input: { name: string; phone?: string; deal: string; kind?: string; area?: string; minBedrooms?: number; maxPrice: number }): Promise<Result> {
+  const supabase = await createClient();
+  const { error } = await supabase.from("rn_client_requests").insert({
+    client_name: input.name, client_phone: input.phone ?? null, deal: input.deal, kind: input.kind ?? null, area: input.area ?? null,
+    min_bedrooms: input.minBedrooms ?? null, max_price: input.maxPrice,
+  });
+  return error ? fail(error) : { ok: true, data: undefined };
+}
+
+export async function closeListing(id: string): Promise<Result> {
+  const supabase = await createClient();
+  const { error } = await supabase.from("rn_listings").update({ status: "closed" }).eq("id", id);
+  return error ? fail(error) : { ok: true, data: undefined };
+}
+
+export async function closeClientRequest(id: string): Promise<Result> {
+  const supabase = await createClient();
+  const { error } = await supabase.from("rn_client_requests").update({ status: "closed" }).eq("id", id);
+  return error ? fail(error) : { ok: true, data: undefined };
+}

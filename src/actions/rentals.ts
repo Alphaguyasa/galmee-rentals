@@ -4,7 +4,7 @@ import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
 import * as rentals from "@/server/dal/rentals";
 import { getSession, getUserId } from "@/server/dal/session";
-import { endLeaseSchema, formToObject, paySchema, propertySchema, startLeaseSchema, unitSchema } from "@/server/validation";
+import { clientRequestSchema, closeSchema, endLeaseSchema, formToObject, listingSchema, paySchema, propertySchema, startLeaseSchema, unitSchema } from "@/server/validation";
 
 /** `error` is a key in the `errors` message namespace. */
 export type ActionState = { error?: string; done?: boolean } | undefined;
@@ -86,5 +86,45 @@ export async function generateInvoicesAction(): Promise<ActionState> {
   const result = await rentals.generateInvoices();
   if (!result.ok) return { error: result.error };
   refreshAll();
+  return { done: true };
+}
+
+export async function addListingAction(_prev: ActionState, formData: FormData): Promise<ActionState> {
+  await requireLogin();
+  const parsed = listingSchema.safeParse(formToObject(formData, ["title", "deal", "kind", "area", "bedrooms", "price", "ownerName", "ownerPhone"]));
+  if (!parsed.success) return { error: parsed.error.issues[0]?.path[0] === "ownerPhone" ? "phone" : "form" };
+  const result = await rentals.addListing(parsed.data);
+  if (!result.ok) return { error: result.error };
+  revalidatePath("/broker");
+  return { done: true };
+}
+
+export async function addClientRequestAction(_prev: ActionState, formData: FormData): Promise<ActionState> {
+  await requireLogin();
+  const parsed = clientRequestSchema.safeParse(formToObject(formData, ["name", "phone", "deal", "kind", "area", "minBedrooms", "maxPrice"]));
+  if (!parsed.success) return { error: parsed.error.issues[0]?.path[0] === "phone" ? "phone" : "form" };
+  const result = await rentals.addClientRequest(parsed.data);
+  if (!result.ok) return { error: result.error };
+  revalidatePath("/broker");
+  return { done: true };
+}
+
+export async function closeListingAction(_prev: ActionState, formData: FormData): Promise<ActionState> {
+  await requireLogin();
+  const parsed = closeSchema.safeParse(formToObject(formData, ["id"]));
+  if (!parsed.success) return { error: "form" };
+  const result = await rentals.closeListing(parsed.data.id);
+  if (!result.ok) return { error: result.error };
+  revalidatePath("/broker");
+  return { done: true };
+}
+
+export async function closeRequestAction(_prev: ActionState, formData: FormData): Promise<ActionState> {
+  await requireLogin();
+  const parsed = closeSchema.safeParse(formToObject(formData, ["id"]));
+  if (!parsed.success) return { error: "form" };
+  const result = await rentals.closeClientRequest(parsed.data.id);
+  if (!result.ok) return { error: result.error };
+  revalidatePath("/broker");
   return { done: true };
 }

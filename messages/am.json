@@ -8,7 +8,8 @@
     "home": "በሮች",
     "late": "የዘገዩ",
     "rent": "ኪራይ",
-    "settings": "ቅንብር"
+    "settings": "ቅንብር",
+    "broker": "ደላላ"
   },
   "unitKinds": {
     "room": "ክፍል",
@@ -188,5 +189,47 @@
     "cbe_birr": "ሲቢኢ ብር",
     "bank": "በባንክ",
     "other": "ሌላ"
+  },
+  "listingKinds": {
+    "room": "ክፍል",
+    "apartment": "አፓርታማ",
+    "house": "ቤት",
+    "shop": "ሱቅ",
+    "office": "ቢሮ",
+    "land": "መሬት"
+  },
+  "broker": {
+    "title": "ደላላ",
+    "requests": "የሚፈልጉ ደንበኞች",
+    "noRequests": "እስካሁን ደንበኛ የለም። ተዛማጅ ቤቶችን ለማየት ደንበኛ ያክሉ።",
+    "matches": "{count} ተዛማጅ",
+    "noMatch": "እስካሁን ተዛማጅ የለም።",
+    "wants": "እስከ {price}",
+    "minBedrooms": "{count}+ መኝታ",
+    "listings": "ዝርዝሮች",
+    "noListings": "እስካሁን ዝርዝር የለም። የመጀመሪያውን ያክሉ።",
+    "bedrooms": "{count} መኝታ",
+    "owner": "ባለቤት፦ {name}",
+    "close": "ዝጋ",
+    "addRequest": "ደንበኛ ያክሉ",
+    "addListing": "ዝርዝር ያክሉ",
+    "added": "ተጨምሯል።",
+    "clientName": "የደንበኛ ስም",
+    "phone": "ስልክ ቁጥር",
+    "deal": "ለ",
+    "kindAny": "ማንኛውም ዓይነት",
+    "kind": "ዓይነት",
+    "area": "አካባቢ",
+    "minBedroomsField": "ቢያንስ መኝታ",
+    "maxPrice": "ከፍተኛ ዋጋ",
+    "title_": "የዝርዝር ርዕስ",
+    "bedroomsField": "መኝታ",
+    "price": "ዋጋ",
+    "ownerName": "የባለቤት ስም",
+    "ownerPhone": "የባለቤት ስልክ",
+    "deals": {
+      "rent": "ኪራይ",
+      "sale": "ሽያጭ"
+    }
   }
 }

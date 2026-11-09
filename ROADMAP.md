@@ -2,39 +2,39 @@
 
 ## M0: Foundation (shared pattern for all Galmee products)
 
-- [ ] Next.js App Router + TS + Tailwind + shadcn/ui scaffold; `npm run build` passes
-- [ ] PWA manifest, icons, offline shell; installs from Android Chrome
-- [ ] Supabase client (`@supabase/ssr`) with `.env.example` values; middleware session refresh
-- [ ] Auth: sign up, log in, log out; after first signup call `create_tenant` (vertical `rentals`)
-- [ ] next-intl with `am`, `om`, `en`; language switcher; Ethiopic-friendly font (Noto Sans Ethiopic)
-- [ ] Ethiopian calendar date display helper + tests
-- [ ] App shell: bottom navigation on mobile, sidebar on desktop, tenant name and logo
+- [x] Next.js App Router + TS + Tailwind + shadcn/ui scaffold; `npm run build` passes
+- [x] PWA manifest, icons, offline shell; installs from Android Chrome
+- [x] Supabase client (`@supabase/ssr`) with `.env.example` values; middleware session refresh
+- [x] Auth: sign up, log in, log out; after first signup call `create_tenant` (vertical `rentals`)
+- [x] next-intl with `am`, `om`, `en`; language switcher; Ethiopic-friendly font (Noto Sans Ethiopic)
+- [x] Ethiopian calendar date display helper + tests
+- [x] App shell: bottom navigation on mobile, sidebar on desktop, tenant name and logo
 - [ ] Staff management (owner only): invite staff, set role
-- [ ] Generated Supabase TypeScript types committed
+- [x] Generated Supabase TypeScript types committed
 
 ## M1: Core screens
 
-- [ ] Customers: list, search by name/phone, detail with balance
-- [ ] Items and stock (if this product uses stock): list, add, receive stock
-- [ ] Payments and credit: record payment, credit statement
+- [x] Customers: search by name/phone from the door board, detail with balance on the tenant page
+- [x] Items and stock: not used by this product (rentals have no stock)
+- [x] Payments and credit: record payment, credit statement
 - [ ] Reports: today / this week / this Ethiopian month; export CSV
 - [ ] Offline queue for the main money action with sync status indicator
 
 ## M2: Galmee Rentals features
 
-- [ ] Property and unit list (vacant/occupied)
-- [ ] Tenant profile
-- [ ] Rent schedule
-- [ ] Payment entry
-- [ ] Overdue list
-- [ ] Broker mode: listings and client matching
-- [ ] Migration: rn_properties
-- [ ] Migration: rn_units
-- [ ] Migration: rn_leases
-- [ ] Migration: rn_rent_invoices
-- [ ] Migration: rn_listings
-- [ ] Auto-generate rent invoices at the start of each Ethiopian month
-- [ ] Overdue calculation
+- [x] Property and unit list (vacant/occupied)
+- [x] Tenant profile
+- [x] Rent schedule
+- [x] Payment entry
+- [x] Overdue list
+- [x] Broker mode: listings and client matching
+- [x] Migration: rn_properties
+- [x] Migration: rn_units
+- [x] Migration: rn_leases
+- [x] Migration: rn_rent_invoices
+- [x] Migration: rn_listings
+- [ ] Auto-generate rent invoices at the start of each Ethiopian month (generator and a "Bill this month" button are in; a daily schedule still needs the database scheduler turned on)
+- [x] Overdue calculation
 
 ## M3: Notifications
 
@@ -58,11 +58,11 @@
 
 ## Q: Quality and security baseline (do these inside M0 and M1, not after)
 
-- [ ] `docs/DESIGN.md` written per the frontend guidelines (palette, type with Ethiopic support, layout wireframes, reviewed against generic defaults)
-- [ ] Tailwind theme tokens and `next/font` fonts from DESIGN.md
-- [ ] `server-only` Data Access Layer in `src/server/dal/`; every Server Action validates with zod and re-checks auth + role
-- [ ] Security headers and CSP with nonce (the security guidelines section 5)
-- [ ] Cross-tenant RLS test extended to this product's tables and passing
-- [ ] Playwright screenshot script for 360 px and 1280 px
-- [ ] `npm audit` clean, Dependabot active
+- [x] `docs/DESIGN.md` written per the frontend guidelines (palette, type with Ethiopic support, layout wireframes, reviewed against generic defaults)
+- [x] Tailwind theme tokens and `next/font` fonts from DESIGN.md
+- [x] `server-only` Data Access Layer in `src/server/dal/`; every Server Action validates with zod and re-checks auth + role
+- [x] Security headers and CSP with nonce (the security guidelines section 5)
+- [x] Cross-tenant RLS test extended to this product's tables and passing
+- [x] Playwright screenshot script for 360 px and 1280 px
+- [x] `npm audit` clean, Dependabot active
 - [ ] Self-audit (the security guidelines section 9) recorded in the dev log

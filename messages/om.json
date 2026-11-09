@@ -8,7 +8,8 @@
     "home": "Balbaloota",
     "late": "Barfatan",
     "rent": "Kiraa",
-    "settings": "Qindaa'ina"
+    "settings": "Qindaa'ina",
+    "broker": "Dallaala"
   },
   "unitKinds": {
     "room": "Kutaa",
@@ -188,5 +189,47 @@
     "cbe_birr": "CBE Birr",
     "bank": "Baankii",
     "other": "Kan biraa"
+  },
+  "listingKinds": {
+    "room": "Kutaa",
+    "apartment": "Apaartaamaa",
+    "house": "Mana",
+    "shop": "Suuqii",
+    "office": "Biiroo",
+    "land": "Lafa"
+  },
+  "broker": {
+    "title": "Dallaala",
+    "requests": "Maamiltoota barbaadan",
+    "noRequests": "Ammatti maamilli hin jiru. Tarreewwan walsimu arguuf maamila dabali.",
+    "matches": "{count} walsima",
+    "noMatch": "Ammatti waan walsimu hin jiru.",
+    "wants": "Hanga {price}",
+    "minBedrooms": "Ciisicha {count}+",
+    "listings": "Tarreewwan",
+    "noListings": "Ammatti tarreen hin jiru. Isa jalqabaa dabali.",
+    "bedrooms": "Ciisicha {count}",
+    "owner": "Abbaa: {name}",
+    "close": "Cufi",
+    "addRequest": "Maamila dabali",
+    "addListing": "Tarree dabali",
+    "added": "Dabalameera.",
+    "clientName": "Maqaa maamilaa",
+    "phone": "Lakkoofsa bilbilaa",
+    "deal": "Kaayyoo",
+    "kindAny": "Gosa kamiyyuu",
+    "kind": "Gosa",
+    "area": "Naannoo",
+    "minBedroomsField": "Yoo xiqqaate ciisicha",
+    "maxPrice": "Gatii olʼaanaa",
+    "title_": "Mata duree tarree",
+    "bedroomsField": "Ciisicha",
+    "price": "Gatii",
+    "ownerName": "Maqaa abbaa",
+    "ownerPhone": "Bilbila abbaa",
+    "deals": {
+      "rent": "Kiraa",
+      "sale": "Gurgurtaa"
+    }
   }
 }
