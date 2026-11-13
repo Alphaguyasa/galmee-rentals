@@ -1,5 +1,28 @@
 # ROADMAP: Galmee Rentals
 
+Build order: M-next first, then M-after, then the remaining open items below.
+
+## M-next: Tier 1 close-out
+
+- [ ] Daily schedule calling `rn_generate_invoices` at the start of each Ethiopian month
+- [ ] Rent receipt layout + print/Telegram
+- [ ] Reminder SMS rows: 3-days-before + due-date generator
+
+## M-after: Tier 2 and 3
+
+- [ ] Collected vs outstanding report per property + CSV
+- [ ] Offline queue for `rn_record_payment`
+- [ ] Broker: restrict listing edits to owner/manager + matches screen polish
+- [ ] Owner statement per property (print/PDF)
+- [ ] Deposits ledger on lease (held/returned)
+- [ ] Staff invite + role gates
+
+## Scope limits
+
+- No tenant-facing portal: SMS is the tenant interface.
+- Listings carry at most one photo for now.
+- The demo data loader is complete; no further work on it.
+
 ## M0: Foundation (shared pattern for all Galmee products)
 
 - [x] Next.js App Router + TS + Tailwind + shadcn/ui scaffold; `npm run build` passes
