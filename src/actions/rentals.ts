@@ -111,6 +111,8 @@ export async function addClientRequestAction(_prev: ActionState, formData: FormD
 
 export async function closeListingAction(_prev: ActionState, formData: FormData): Promise<ActionState> {
   await requireLogin();
+  const denied = await requireManager();
+  if (denied) return denied;
   const parsed = closeSchema.safeParse(formToObject(formData, ["id"]));
   if (!parsed.success) return { error: "form" };
   const result = await rentals.closeListing(parsed.data.id);
@@ -121,6 +123,8 @@ export async function closeListingAction(_prev: ActionState, formData: FormData)
 
 export async function closeRequestAction(_prev: ActionState, formData: FormData): Promise<ActionState> {
   await requireLogin();
+  const denied = await requireManager();
+  if (denied) return denied;
   const parsed = closeSchema.safeParse(formToObject(formData, ["id"]));
   if (!parsed.success) return { error: "form" };
   const result = await rentals.closeClientRequest(parsed.data.id);

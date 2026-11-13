@@ -8,10 +8,13 @@ import { SelectField } from "@/components/rentals/fields";
 import type { Locale } from "@/i18n/config";
 import { formatBirr } from "@/lib/money";
 import { listBroker } from "@/server/dal/rentals";
+import { getSession } from "@/server/dal/session";
 import { DEALS, LISTING_KINDS } from "@/server/validation";
 
 export default async function BrokerPage() {
-  const [t, tKinds, locale, { listings, requests }] = await Promise.all([getTranslations("broker"), getTranslations("listingKinds"), getLocale() as Promise<Locale>, listBroker()]);
+  const [t, tKinds, locale, { listings, requests }, { profile }] = await Promise.all([getTranslations("broker"), getTranslations("listingKinds"), getLocale() as Promise<Locale>, listBroker(), getSession()]);
+  // Staff can add listings and requests; only an owner or manager may close them.
+  const canClose = profile.role !== "staff";
   const dealOptions = DEALS.map((d) => ({ value: d, label: t(`deals.${d}`) }));
   const kindOptions = LISTING_KINDS.map((k) => ({ value: k, label: tKinds(k) }));
 
@@ -32,9 +35,11 @@ export default async function BrokerPage() {
                     {[t(`deals.${r.deal}`), r.kind ? tKinds(r.kind) : null, r.area, r.minBedrooms ? t("minBedrooms", { count: r.minBedrooms }) : null, t("wants", { price: formatBirr(r.maxPrice, locale) })].filter(Boolean).join(", ")}
                   </p>
                 </div>
-                <ActionForm action={closeRequestAction} submitLabel={t("close")} size="sm" variant="outline" className="contents">
-                  <input type="hidden" name="id" value={r.id} />
-                </ActionForm>
+                {canClose ? (
+                  <ActionForm action={closeRequestAction} submitLabel={t("close")} size="sm" variant="outline" className="contents">
+                    <input type="hidden" name="id" value={r.id} />
+                  </ActionForm>
+                ) : null}
               </div>
               {r.clientPhone ? (
                 <a href={`tel:${r.clientPhone}`} className="num inline-flex w-fit items-center gap-1 text-sm font-medium text-primary underline-offset-4 hover:underline">
@@ -85,9 +90,11 @@ export default async function BrokerPage() {
                   <p className="num text-sm text-muted-foreground">{t("owner", { name: [l.ownerName, l.ownerPhone].filter(Boolean).join(", ") })}</p>
                 ) : null}
               </div>
-              <ActionForm action={closeListingAction} submitLabel={t("close")} size="sm" variant="outline" className="contents">
-                <input type="hidden" name="id" value={l.id} />
-              </ActionForm>
+              {canClose ? (
+                <ActionForm action={closeListingAction} submitLabel={t("close")} size="sm" variant="outline" className="contents">
+                  <input type="hidden" name="id" value={l.id} />
+                </ActionForm>
+              ) : null}
             </li>
           ))}
         </ul>

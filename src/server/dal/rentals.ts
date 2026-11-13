@@ -300,14 +300,18 @@ export async function addClientRequest(input: { name: string; phone?: string; de
 
 export async function closeListing(id: string): Promise<Result> {
   const supabase = await createClient();
-  const { error } = await supabase.from("rn_listings").update({ status: "closed" }).eq("id", id);
-  return error ? fail(error) : { ok: true, data: undefined };
+  const { data, error } = await supabase.from("rn_listings").update({ status: "closed" }).eq("id", id).select("id");
+  if (error) return fail(error);
+  // RLS hides rows the caller may not change, so an empty result means "not allowed or gone".
+  return data.length === 0 ? { ok: false, error: "not_allowed" } : { ok: true, data: undefined };
 }
 
 export async function closeClientRequest(id: string): Promise<Result> {
   const supabase = await createClient();
-  const { error } = await supabase.from("rn_client_requests").update({ status: "closed" }).eq("id", id);
-  return error ? fail(error) : { ok: true, data: undefined };
+  const { data, error } = await supabase.from("rn_client_requests").update({ status: "closed" }).eq("id", id).select("id");
+  if (error) return fail(error);
+  // RLS hides rows the caller may not change, so an empty result means "not allowed or gone".
+  return data.length === 0 ? { ok: false, error: "not_allowed" } : { ok: true, data: undefined };
 }
 
 export async function loadDemoData(): Promise<Result> {
