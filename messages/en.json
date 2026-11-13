@@ -23,7 +23,7 @@
     "searchAction": "Search",
     "filter": "Show",
     "letCount": "{let} of {total} doors rented",
-    "lateSummary": "{count} late, {amount}",
+    "lateBandSub": "{count} late · {doors}",
     "noneLate": "Nobody is late",
     "filters": {
       "all": "All",
@@ -49,7 +49,7 @@
   },
   "late": {
     "title": "Late rent",
-    "total": "{amount} late",
+    "count": "{count, plural, one {# tenant} other {# tenants}} late",
     "empty": "Nobody is late.",
     "where": "{property}, door {unit}",
     "since": "Since {date}, {days} days, {months, plural, one {# month} other {# months}}",
@@ -128,6 +128,7 @@
   },
   "common": {
     "language": "Language",
+    "birr": "birr",
     "offline": "You are offline",
     "offlineBody": "Galmee will reconnect automatically.",
     "retry": "Try again",

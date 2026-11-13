@@ -2,6 +2,7 @@ import { redirect } from "next/navigation";
 import { getLocale, getTranslations } from "next-intl/server";
 import { addPropertyAction, addUnitAction } from "@/actions/rentals";
 import { ActionForm } from "@/components/rentals/action-form";
+import { BirrField } from "@/components/rentals/birr-field";
 import { Field } from "@/components/rentals/field";
 import { SelectField } from "@/components/rentals/fields";
 import type { Locale } from "@/i18n/config";
@@ -53,7 +54,7 @@ export default async function SettingsPage() {
             <SelectField name="property" label={t("property")} options={properties.map((p) => ({ value: p.id, label: p.name }))} />
             <Field name="label" label={t("unitLabel")} required />
             <SelectField name="kind" label={t("kind")} defaultValue="room" options={kindOptions} />
-            <Field name="rent" label={t("monthlyRent")} inputMode="decimal" required />
+            <BirrField name="rent" label={t("monthlyRent")} required />
           </ActionForm>
         </section>
       ) : null}

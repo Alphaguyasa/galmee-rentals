@@ -1,7 +1,11 @@
 import Link from "next/link";
 import { getLocale, getTranslations } from "next-intl/server";
-import { Plus, Search } from "lucide-react";
+import { DoorOpen, Plus, Search, SearchX, TriangleAlert } from "lucide-react";
 import { loadDemoDataAction } from "@/actions/rentals";
+import { EmptyState } from "@/components/galmee/empty-state";
+import { ListRow, ListSheet } from "@/components/galmee/list-row";
+import { MoneySummaryCard } from "@/components/galmee/money-summary-card";
+import { StatusBadge } from "@/components/galmee/status-badge";
 import { ActionForm } from "@/components/rentals/action-form";
 import { Door, type DoorState } from "@/components/rentals/door";
 import { buttonVariants } from "@/components/ui/button";
@@ -26,8 +30,9 @@ export default async function DoorsPage({ searchParams }: { searchParams: Promis
   const parsed = searchParam.safeParse(q ?? "");
   const query = parsed.success ? parsed.data : "";
   const filter: UnitFilter = FILTERS.includes(show as UnitFilter) ? (show as UnitFilter) : "all";
-  const [t, locale, units, allUnits, properties, { profile, tenant }] = await Promise.all([
+  const [t, tLate, locale, units, allUnits, properties, { profile, tenant }] = await Promise.all([
     getTranslations("doors"),
+    getTranslations("late"),
     getLocale() as Promise<Locale>,
     listUnits(query, filter),
     listUnits("", "all"),
@@ -58,16 +63,17 @@ export default async function DoorsPage({ searchParams }: { searchParams: Promis
   return (
     <div className="grid gap-4">
       {allUnits.length > 0 ? (
-        <p className="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1">
-          <span className="font-semibold">{t("letCount", { let: let_, total: allUnits.length })}</span>
-          {late.length > 0 ? (
-            <Link href="/late" className="num font-semibold text-destructive underline-offset-4 hover:underline">
-              {t("lateSummary", { count: late.length, amount: formatBirr(lateTotal, locale) })}
-            </Link>
-          ) : (
-            <span className="text-sm text-muted-foreground">{t("noneLate")}</span>
-          )}
-        </p>
+        late.length > 0 ? (
+          <MoneySummaryCard
+            tone="owed"
+            href="/late"
+            label={tLate("title")}
+            figure={formatBirr(lateTotal, locale)}
+            sub={t("lateBandSub", { count: late.length, doors: t("letCount", { let: let_, total: allUnits.length }) })}
+          />
+        ) : (
+          <MoneySummaryCard size="md" label={t("noneLate")} figure={t("letCount", { let: let_, total: allUnits.length })} />
+        )
       ) : null}
 
       <form action="/" className="flex gap-2">
@@ -102,23 +108,28 @@ export default async function DoorsPage({ searchParams }: { searchParams: Promis
       </nav>
 
       {groups.size === 0 ? (
-        <div className="grid gap-3">
-          <p className="text-muted-foreground">{query ? t("noMatch") : t(`empty.${filter}`)}</p>
-          {!query && filter === "all" && canManage ? (
-            <Link href="/settings" className={cn(buttonVariants({ size: "lg" }), "h-12")}>
-              <Plus aria-hidden />
-              {t("addFirst")}
-            </Link>
-          ) : null}
-          {!query && filter === "all" && canManage && tenant.name === DEMO_TENANT ? <ActionForm action={loadDemoDataAction} submitLabel={t("loadDemo")} variant="outline" /> : null}
-        </div>
+        <EmptyState
+          icon={query ? SearchX : DoorOpen}
+          message={query ? t("noMatch") : t(`empty.${filter}`)}
+          action={
+            !query && filter === "all" && canManage ? (
+              <div className="grid w-full max-w-xs gap-2">
+                <Link href="/settings" className={cn(buttonVariants({ size: "lg" }), "h-12")}>
+                  <Plus aria-hidden />
+                  {t("addFirst")}
+                </Link>
+                {tenant.name === DEMO_TENANT ? <ActionForm action={loadDemoDataAction} submitLabel={t("loadDemo")} variant="outline" /> : null}
+              </div>
+            ) : undefined
+          }
+        />
       ) : (
         <div className="grid gap-6">
           {[...groups.entries()].map(([id, group]) => (
             <section key={id} className="grid gap-3">
-              <h2 className="text-lg font-semibold">{group.name}</h2>
+              <h2 className="text-xl font-bold">{group.name}</h2>
               {group.units.length === 0 ? (
-                <p className="text-sm text-muted-foreground">{t("noUnits")}</p>
+                <EmptyState message={t("noUnits")} />
               ) : (
                 <>
                   <ul className="flex flex-wrap gap-2">
@@ -137,18 +148,22 @@ export default async function DoorsPage({ searchParams }: { searchParams: Promis
                     })}
                   </ul>
                   {group.units.some((u) => u.overdue > 0) ? (
-                    <ul className="grid gap-1 text-sm">
+                    <ListSheet>
                       {group.units
                         .filter((u) => u.overdue > 0)
                         .map((u) => (
-                          <li key={u.id}>
-                            <Link href={`/leases/${u.leaseId}`} className="flex items-baseline justify-between gap-3 border-b py-2 hover:bg-accent/40">
-                              <span className="min-w-0 truncate">{t("lateLine", { name: u.tenantName ?? "", label: u.label })}</span>
-                              <span className="num shrink-0 font-semibold text-destructive">{t("lateAmount", { amount: formatBirr(u.overdue, locale) })}</span>
-                            </Link>
-                          </li>
+                          <ListRow
+                            key={u.id}
+                            href={`/leases/${u.leaseId}`}
+                            title={t("lateLine", { name: u.tenantName ?? "", label: u.label })}
+                            right={
+                              <StatusBadge tone="urgent" icon={TriangleAlert}>
+                                <span className="num">{t("lateAmount", { amount: formatBirr(u.overdue, locale) })}</span>
+                              </StatusBadge>
+                            }
+                          />
                         ))}
-                    </ul>
+                    </ListSheet>
                   ) : null}
                 </>
               )}

@@ -23,7 +23,7 @@
     "searchAction": "Barbaadi",
     "filter": "Agarsiisi",
     "letCount": "Balbala {total} keessaa {let} kireeffameera",
-    "lateSummary": "{count} barfatan, {amount}",
+    "lateBandSub": "{count} barfatan · {doors}",
     "noneLate": "Namni barfate hin jiru",
     "filters": {
       "all": "Hunda",
@@ -49,7 +49,7 @@
   },
   "late": {
     "title": "Kiraa barfate",
-    "total": "{amount} barfate",
+    "count": "Kireeffattoota {count} barfatan",
     "empty": "Namni barfate hin jiru.",
     "where": "{property}, balbala {unit}",
     "since": "{date} irraa, guyyaa {days}, jiʼa {months}",
@@ -128,6 +128,7 @@
   },
   "common": {
     "language": "Afaan",
+    "birr": "birr",
     "offline": "Interneetii hin qabdu",
     "offlineBody": "Galmeen ofumaan deebi'ee wal qunnama.",
     "retry": "Irra deebi'ii yaali",

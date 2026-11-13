@@ -23,7 +23,7 @@
     "searchAction": "ፈልግ",
     "filter": "አሳይ",
     "letCount": "ከ{total} በሮች {let} ተከራይተዋል",
-    "lateSummary": "{count} የዘገዩ፣ {amount}",
+    "lateBandSub": "{count} የዘገዩ · {doors}",
     "noneLate": "የዘገየ የለም",
     "filters": {
       "all": "ሁሉም",
@@ -49,7 +49,7 @@
   },
   "late": {
     "title": "የዘገየ ኪራይ",
-    "total": "{amount} ዘግይቷል",
+    "count": "{count} ተከራዮች ዘግይተዋል",
     "empty": "የዘገየ የለም።",
     "where": "{property}፣ በር {unit}",
     "since": "ከ{date} ጀምሮ፣ {days} ቀን፣ {months} ወር",
@@ -128,6 +128,7 @@
   },
   "common": {
     "language": "ቋንቋ",
+    "birr": "ብር",
     "offline": "ከኢንተርኔት ውጭ ነዎት",
     "offlineBody": "ገልሜ በራሱ እንደገና ይገናኛል።",
     "retry": "እንደገና ይሞክሩ",

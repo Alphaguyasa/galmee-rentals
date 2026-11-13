@@ -2,6 +2,7 @@ import { getLocale, getTranslations } from "next-intl/server";
 import { Phone } from "lucide-react";
 import { addClientRequestAction, addListingAction, closeListingAction, closeRequestAction } from "@/actions/rentals";
 import { ActionForm } from "@/components/rentals/action-form";
+import { BirrField } from "@/components/rentals/birr-field";
 import { Field } from "@/components/rentals/field";
 import { SelectField } from "@/components/rentals/fields";
 import type { Locale } from "@/i18n/config";
@@ -64,7 +65,7 @@ export default async function BrokerPage() {
             <SelectField name="kind" label={t("kind")} defaultValue="" options={[{ value: "", label: t("kindAny") }, ...kindOptions]} />
             <Field name="area" label={t("area")} />
             <Field name="minBedrooms" label={t("minBedroomsField")} type="number" inputMode="numeric" min={0} max={50} />
-            <Field name="maxPrice" label={t("maxPrice")} inputMode="decimal" required />
+            <BirrField name="maxPrice" label={t("maxPrice")} required />
           </ActionForm>
         </details>
       </section>
@@ -98,7 +99,7 @@ export default async function BrokerPage() {
             <SelectField name="kind" label={t("kind")} defaultValue="house" options={kindOptions} />
             <Field name="area" label={t("area")} />
             <Field name="bedrooms" label={t("bedroomsField")} type="number" inputMode="numeric" min={0} max={50} />
-            <Field name="price" label={t("price")} inputMode="decimal" required />
+            <BirrField name="price" label={t("price")} required />
             <Field name="ownerName" label={t("ownerName")} />
             <Field name="ownerPhone" label={t("ownerPhone")} type="tel" inputMode="tel" />
           </ActionForm>

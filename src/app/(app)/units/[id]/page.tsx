@@ -3,6 +3,7 @@ import { getLocale, getTranslations } from "next-intl/server";
 import { startLeaseAction } from "@/actions/rentals";
 import { ActionForm } from "@/components/rentals/action-form";
 import { ClientRef } from "@/components/rentals/client-ref";
+import { BirrField } from "@/components/rentals/birr-field";
 import { Field } from "@/components/rentals/field";
 import { DateField } from "@/components/rentals/fields";
 import { addisDay } from "@/lib/addis-time";
@@ -37,9 +38,9 @@ export default async function UnitPage({ params }: { params: Promise<{ id: strin
           <Field name="name" label={t("name")} required />
           <Field name="phone" label={t("phone")} type="tel" inputMode="tel" />
           <DateField name="start" label={t("start")} defaultValue={today} />
-          <Field name="rent" label={t("rent")} inputMode="decimal" required defaultValue={unit.monthlyRent > 0 ? String(unit.monthlyRent) : ""} />
+          <BirrField name="rent" label={t("rent")} required defaultValue={unit.monthlyRent > 0 ? String(unit.monthlyRent) : ""} />
           <Field name="dueDay" label={t("dueDay")} type="number" inputMode="numeric" required min={1} max={30} defaultValue={String(toEthiopian(parseGregorian(today)).day)} />
-          <Field name="deposit" label={t("deposit")} inputMode="decimal" />
+          <BirrField name="deposit" label={t("deposit")} />
         </ActionForm>
       ) : (
         <p className="text-muted-foreground">{t("managerOnly")}</p>

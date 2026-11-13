@@ -1,5 +1,12 @@
 # DESIGN.md: Galmee Rentals
 
+> Galmee Rentals uses the **Galmee design system**. Tokens live in `src/app/globals.css`
+> (only `--trade`, gate teal `#136065`, plus the brass `--key` of the door handle are
+> rentals-specific; `--gate` and `--late` now map to the shared trade and owed colours),
+> shared components in `src/components/galmee/`. Type is now Atkinson Hyperlegible Next
+> with Noto Sans Ethiopic. The colour and type tables below are superseded by the system;
+> the brief, the door row and the screen wireframes still hold.
+
 Change this file first, then the code.
 
 ## Brief
