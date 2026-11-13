@@ -3,6 +3,7 @@ import { getLocale, getTranslations } from "next-intl/server";
 import { startLeaseAction } from "@/actions/rentals";
 import { ActionForm } from "@/components/rentals/action-form";
 import { ClientRef } from "@/components/rentals/client-ref";
+import { SeekerMatches } from "@/components/rentals/seeker-matches";
 import { BirrField } from "@/components/rentals/birr-field";
 import { Field } from "@/components/rentals/field";
 import { DateField } from "@/components/rentals/fields";
@@ -10,14 +11,14 @@ import { addisDay } from "@/lib/addis-time";
 import { parseGregorian, toEthiopian } from "@/lib/ethiopian-date";
 import { formatBirr } from "@/lib/money";
 import type { Locale } from "@/i18n/config";
-import { getUnit } from "@/server/dal/rentals";
+import { getUnit, listSeekersForUnit } from "@/server/dal/rentals";
 import { getSession } from "@/server/dal/session";
 import { uuidParam } from "@/server/validation";
 
 export default async function UnitPage({ params }: { params: Promise<{ id: string }> }) {
   const { id } = await params;
   if (!uuidParam.safeParse(id).success) notFound();
-  const [unit, t, tKinds, locale, { profile }] = await Promise.all([getUnit(id), getTranslations("moveIn"), getTranslations("unitKinds"), getLocale() as Promise<Locale>, getSession()]);
+  const [unit, t, tKinds, locale, { profile }, seekers] = await Promise.all([getUnit(id), getTranslations("moveIn"), getTranslations("unitKinds"), getLocale() as Promise<Locale>, getSession(), listSeekersForUnit(id)]);
   if (!unit) notFound();
   if (unit.leaseId) redirect(`/leases/${unit.leaseId}`);
 
@@ -45,6 +46,7 @@ export default async function UnitPage({ params }: { params: Promise<{ id: strin
       ) : (
         <p className="text-muted-foreground">{t("managerOnly")}</p>
       )}
+      <SeekerMatches unitId={unit.id} seekers={seekers} canManage={canManage} locale={locale} />
     </div>
   );
 }

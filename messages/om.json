@@ -235,5 +235,16 @@
       "rent": "Kiraa",
       "sale": "Gurgurtaa"
     }
+  },
+  "seekers": {
+    "title": "Namoota mana akkanaa barbaadan",
+    "hint": "Maamiltoota barbaadan gosa, kiraa fi naannoo balbala kanaa wajjin walsiman. Yeroo kiraan xumuramu ofumaan ergaan ergamaaf.",
+    "none": "Gaaffiin balbala kanaaf ta'u ammaaf hin jiru. Fuula Dallaalaa irratti gaaffii dabali.",
+    "budget": "Hanga {price}",
+    "texted": "Ergameera",
+    "noPhone": "Bilbila hin qabu",
+    "call": "{name} bilbili",
+    "send": "Amma nama {count}f ergaa ergi",
+    "sent": "Ergaawwan tarree galaniiru."
   }
 }

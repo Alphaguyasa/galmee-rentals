@@ -314,6 +314,28 @@ export async function closeClientRequest(id: string): Promise<Result> {
   return data.length === 0 ? { ok: false, error: "not_allowed" } : { ok: true, data: undefined };
 }
 
+export type SeekerMatch = { requestId: string; name: string; phone: string | null; maxPrice: number; alerted: boolean };
+
+/** Open "rent" client requests that fit this vacant door (kind, budget, area). */
+export async function listSeekersForUnit(unitId: string): Promise<SeekerMatch[]> {
+  const supabase = await createClient();
+  const { data, error } = await supabase
+    .from("rn_vacancy_matches")
+    .select("request_id, client_name, client_phone, max_price, alerted")
+    .eq("unit_id", unitId)
+    .order("max_price", { ascending: true })
+    .limit(100);
+  if (error) throw error;
+  return data.map((m) => ({ requestId: m.request_id!, name: m.client_name!, phone: m.client_phone, maxPrice: n(m.max_price), alerted: Boolean(m.alerted) }));
+}
+
+/** Queues one SMS per matching seeker not yet told about this door; returns how many were queued. */
+export async function alertSeekers(unitId: string): Promise<Result<number>> {
+  const supabase = await createClient();
+  const { data, error } = await supabase.rpc("rn_alert_seekers", { p_unit: unitId });
+  return error ? fail(error) : { ok: true, data: data ?? 0 };
+}
+
 export async function loadDemoData(): Promise<Result> {
   const supabase = await createClient();
   const { error } = await supabase.rpc("rn_load_demo");

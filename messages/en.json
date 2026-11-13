@@ -235,5 +235,16 @@
       "rent": "Rent",
       "sale": "Sale"
     }
+  },
+  "seekers": {
+    "title": "People looking for a place like this",
+    "hint": "Client requests that fit this door's type, rent and area. When a rental ends they are texted automatically.",
+    "none": "No client request fits this door yet. Add requests on the Broker screen.",
+    "budget": "Up to {price}",
+    "texted": "Texted",
+    "noPhone": "No phone",
+    "call": "Call {name}",
+    "send": "Text {count, plural, one {# person} other {# people}} now",
+    "sent": "Messages queued."
   }
 }

@@ -2837,6 +2837,19 @@ export type Database = {
           },
         ]
       }
+      rn_vacancy_alerts: {
+        Row: {
+          created_at: string
+          id: string
+          notification_id: string | null
+          request_id: string
+          tenant_id: string
+          unit_id: string
+        }
+        Insert: never
+        Update: never
+        Relationships: []
+      }
       rn_units: {
         Row: {
           active: boolean
@@ -4603,6 +4616,23 @@ export type Database = {
           },
         ]
       }
+      rn_vacancy_matches: {
+        Row: {
+          alerted: boolean | null
+          client_name: string | null
+          client_phone: string | null
+          max_price: number | null
+          monthly_rent: number | null
+          property_id: string | null
+          property_name: string | null
+          request_id: string | null
+          tenant_id: string | null
+          unit_id: string | null
+          unit_kind: string | null
+          unit_label: string | null
+        }
+        Relationships: []
+      }
       sc_class_term_ranks: {
         Row: {
           academic_year: number | null
@@ -5303,6 +5333,7 @@ export type Database = {
         }
         Returns: string
       }
+      rn_alert_seekers: { Args: { p_unit: string }; Returns: number }
       rn_end_lease: {
         Args: { p_end: string; p_lease: string }
         Returns: undefined

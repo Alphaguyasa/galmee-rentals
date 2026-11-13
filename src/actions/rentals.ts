@@ -133,6 +133,18 @@ export async function closeRequestAction(_prev: ActionState, formData: FormData)
   return { done: true };
 }
 
+export async function alertSeekersAction(_prev: ActionState, formData: FormData): Promise<ActionState> {
+  await requireLogin();
+  const denied = await requireManager();
+  if (denied) return denied;
+  const parsed = closeSchema.safeParse(formToObject(formData, ["id"]));
+  if (!parsed.success) return { error: "form" };
+  const result = await rentals.alertSeekers(parsed.data.id);
+  if (!result.ok) return { error: result.error };
+  revalidatePath(`/units/${parsed.data.id}`);
+  return { done: true };
+}
+
 export async function loadDemoDataAction(): Promise<ActionState> {
   await requireLogin();
   const result = await rentals.loadDemoData();

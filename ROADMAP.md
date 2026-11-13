@@ -51,6 +51,7 @@ Build order: M-next first, then M-after, then the remaining open items below.
 - [x] Payment entry
 - [x] Overdue list
 - [x] Broker mode: listings and client matching
+- [x] Seeker auto-match: client requests matched to the landlord's own vacant doors; matching seekers get an SMS row when a rental ends, once per door
 - [x] Migration: rn_properties
 - [x] Migration: rn_units
 - [x] Migration: rn_leases
