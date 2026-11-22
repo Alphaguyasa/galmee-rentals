@@ -55,7 +55,14 @@ begin
   begin insert into public.rn_vacancy_alerts(unit_id, request_id) values (u2, rq); ok := true; exception when others then ok := false; end;
   r := r || 'staff direct alert insert=' || ok || ' (expect false); ';
   update public.rn_client_requests set status = 'closed' where id = rq; get diagnostics n = row_count;
-  r := r || 'staff close request rows=' || n || ' (expect 0 once the broker update policy is owner/manager only); ';
+  r := r || 'staff close request rows=' || n || ' (expect 0: broker updates are owner/manager only); ';
+  begin insert into public.rn_listings(title, price, owner_phone) values ('Staff listing', 5000, '0911000007') returning id into ubu; ok := true; exception when others then ok := false; end;
+  r := r || 'staff adds listing=' || ok || ' (expect true); ';
+  update public.rn_listings set owner_phone = '0911999999' where id = ubu; get diagnostics n = row_count;
+  r := r || 'staff edits listing rows=' || n || ' (expect 0); ';
+  perform set_config('request.jwt.claims', json_build_object('sub', ua, 'role','authenticated')::text, true);
+  update public.rn_listings set status = 'closed' where id = ubu; get diagnostics n = row_count;
+  r := r || 'owner closes listing rows=' || n || ' (expect 1); ';
 
   perform set_config('request.jwt.claims', json_build_object('sub', ub, 'role','authenticated')::text, true);
   select count(*) into n from public.rn_vacancy_alerts; r := r || 'B sees A alerts=' || n || ' (expect 0); ';
