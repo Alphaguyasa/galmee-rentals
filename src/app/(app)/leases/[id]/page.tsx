@@ -136,6 +136,7 @@ export default async function LeasePage({ params }: { params: Promise<{ id: stri
             {lease.payments.map((p) => (
               <ListRow
                 key={p.id}
+                href={`/receipts/${p.id}`}
                 title={<span className="num">{formatEthiopianDate(p.createdAt, locale, { withEra: false })}</span>}
                 sub={`${tMethods(p.method)}${p.reference ? `, ${p.reference}` : ""}`}
                 right={<span className="num font-semibold text-money-in">{formatBirr(p.amount, locale)}</span>}

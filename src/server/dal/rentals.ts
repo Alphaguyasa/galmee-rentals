@@ -2,6 +2,7 @@ import "server-only";
 import { rentalErrorKey } from "@/lib/rental-errors";
 import { createClient } from "@/lib/supabase/server";
 import type { Enums } from "@/lib/database.types";
+import { parseSnapshot, type StoredRentPayment } from "@/lib/rent-receipt";
 
 export type Result<T = void> = { ok: true; data: T } | { ok: false; error: string };
 
@@ -194,16 +195,16 @@ export async function startLease(input: { unit: string; name: string; phone?: st
   return error ? fail(error) : { ok: true, data };
 }
 
-export async function pay(input: { lease: string; amount: number; method: Enums<"pay_method">; reference?: string; clientRef: string }): Promise<Result> {
+export async function pay(input: { lease: string; amount: number; method: Enums<"pay_method">; reference?: string; clientRef: string }): Promise<Result<string>> {
   const supabase = await createClient();
-  const { error } = await supabase.rpc("rn_record_payment", {
+  const { data, error } = await supabase.rpc("rn_record_payment", {
     p_lease: input.lease,
     p_amount: input.amount,
     p_method: input.method,
     p_reference: input.reference ?? "",
     p_client_ref: input.clientRef,
   });
-  return error ? fail(error) : { ok: true, data: undefined };
+  return error ? fail(error) : { ok: true, data: data as string };
 }
 
 export async function endLease(input: { lease: string; end: string }): Promise<Result> {
@@ -340,4 +341,33 @@ export async function loadDemoData(): Promise<Result> {
   const supabase = await createClient();
   const { error } = await supabase.rpc("rn_load_demo");
   return error ? fail(error) : { ok: true, data: undefined };
+}
+
+/** A rent payment with what the receipt needs. Reprints read the stored row, never recomputed balances. */
+export async function getRentReceipt(id: string): Promise<(StoredRentPayment & { leaseId: string }) | null> {
+  const supabase = await createClient();
+  // select("*") so receipt_no / receipt are read when present without failing on older schemas.
+  const pay = await supabase.from("rn_payments").select("*").eq("id", id).maybeSingle();
+  if (pay.error) throw pay.error;
+  if (!pay.data) return null;
+  const row = pay.data as typeof pay.data & { receipt_no?: string | null; receipt?: unknown };
+  const lease = await supabase
+    .from("rn_lease_board")
+    .select("tenant_name, tenant_phone, property_name, unit_label")
+    .eq("id", row.lease_id)
+    .maybeSingle();
+  if (lease.error) throw lease.error;
+  if (!lease.data) return null;
+  return {
+    leaseId: row.lease_id,
+    receiptNo: row.receipt_no ?? null,
+    createdAt: row.created_at,
+    amount: row.amount,
+    method: row.method,
+    reference: row.reference,
+    tenantName: lease.data.tenant_name ?? "",
+    tenantPhone: lease.data.tenant_phone,
+    door: `${lease.data.property_name ?? ""} · ${lease.data.unit_label ?? ""}`,
+    snapshot: parseSnapshot(row.receipt),
+  };
 }

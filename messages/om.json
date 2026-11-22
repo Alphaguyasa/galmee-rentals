@@ -246,5 +246,17 @@
     "call": "{name} bilbili",
     "send": "Amma nama {count}f ergaa ergi",
     "sent": "Ergaawwan tarree galaniiru."
+  },
+  "receipt": {
+    "title": "Nagahee kiraa",
+    "print": "Nagahee maxxansi",
+    "width58": "58 mm",
+    "width80": "80 mm",
+    "widthLabel": "Bal'ina waraqaa",
+    "noNumber": "Kaffaltiin kun lakkoofsi nagahee osoo hin jalqabin fudhatame, kanaaf lakkoofsa malee maxxanfama.",
+    "rentFor": "Kiraa: {month}",
+    "prepaid": "Kiraa dursee kaffalame",
+    "payment": "Kaffaltii kiraa",
+    "back": "Gara kireeffataatti deebi'i"
   }
 }

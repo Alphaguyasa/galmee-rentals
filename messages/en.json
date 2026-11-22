@@ -246,5 +246,17 @@
     "call": "Call {name}",
     "send": "Text {count, plural, one {# person} other {# people}} now",
     "sent": "Messages queued."
+  },
+  "receipt": {
+    "title": "Rent receipt",
+    "print": "Print receipt",
+    "width58": "58 mm",
+    "width80": "80 mm",
+    "widthLabel": "Paper width",
+    "noNumber": "This payment was taken before receipt numbers started, so it prints without a number.",
+    "rentFor": "Rent: {month}",
+    "prepaid": "Prepaid rent",
+    "payment": "Rent payment",
+    "back": "Back to tenant"
   }
 }

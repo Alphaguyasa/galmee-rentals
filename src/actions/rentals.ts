@@ -66,7 +66,8 @@ export async function payAction(_prev: ActionState, formData: FormData): Promise
   const result = await rentals.pay(parsed.data);
   if (!result.ok) return { error: result.error };
   refreshAll();
-  return { done: true };
+  // Straight to the receipt, so it can be printed or shown to the tenant.
+  redirect(`/receipts/${result.data}`);
 }
 
 export async function endLeaseAction(_prev: ActionState, formData: FormData): Promise<ActionState> {
