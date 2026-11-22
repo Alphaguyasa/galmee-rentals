@@ -5,8 +5,8 @@ Build order: M-next first, then M-after, then the remaining open items below.
 ## M-next: Tier 1 close-out
 
 - [ ] Daily schedule calling `rn_generate_invoices` at the start of each Ethiopian month
-- [ ] Rent receipt layout + print/Telegram
-- [ ] Reminder SMS rows: 3-days-before + due-date generator
+- [ ] Rent receipt layout + print/Telegram (58/80 mm print and reprint are in; numbering waits on one database change; Telegram copy still to do)
+- [x] Reminder SMS rows: 3-days-before + due-date generator ("Send rent reminders now" on the rent screen; the daily run joins the billing schedule)
 
 ## M-after: Tier 2 and 3
 

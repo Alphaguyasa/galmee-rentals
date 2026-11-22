@@ -109,7 +109,10 @@
     "late": "Late, {amount}",
     "owes": "Owes {amount}",
     "bill": "Bill this month",
-    "billed": "Rent billed for every active rental."
+    "billed": "Rent billed for every active rental.",
+    "remind": "Send rent reminders now",
+    "reminded": "Reminders queued. Each tenant gets each reminder only once.",
+    "remindHint": "Tenants with a phone number get an SMS 3 days before rent is due and on the due date."
   },
   "settings": {
     "title": "Setup",

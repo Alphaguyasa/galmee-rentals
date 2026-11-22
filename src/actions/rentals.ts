@@ -90,6 +90,15 @@ export async function generateInvoicesAction(): Promise<ActionState> {
   return { done: true };
 }
 
+export async function queueRemindersAction(): Promise<ActionState> {
+  await requireLogin();
+  const denied = await requireManager();
+  if (denied) return denied;
+  const result = await rentals.queueReminders();
+  if (!result.ok) return { error: result.error };
+  return { done: true };
+}
+
 export async function addListingAction(_prev: ActionState, formData: FormData): Promise<ActionState> {
   await requireLogin();
   const parsed = listingSchema.safeParse(formToObject(formData, ["title", "deal", "kind", "area", "bedrooms", "price", "ownerName", "ownerPhone"]));

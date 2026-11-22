@@ -5340,6 +5340,7 @@ export type Database = {
       }
       rn_generate_invoices: { Args: never; Returns: number }
       rn_load_demo: { Args: never; Returns: undefined }
+      rn_queue_reminders: { Args: never; Returns: number }
       rn_record_payment: {
         Args: {
           p_amount: number

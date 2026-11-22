@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { getLocale, getTranslations } from "next-intl/server";
-import { generateInvoicesAction } from "@/actions/rentals";
+import { generateInvoicesAction, queueRemindersAction } from "@/actions/rentals";
 import { ActionForm } from "@/components/rentals/action-form";
 import type { Locale } from "@/i18n/config";
 import { addisDay } from "@/lib/addis-time";
@@ -89,6 +89,12 @@ export default async function RentSchedulePage({ searchParams }: { searchParams:
       ) : null}
 
       {atCurrent ? <ActionForm action={generateInvoicesAction} submitLabel={t("bill")} doneLabel={t("billed")} variant="outline" /> : null}
+      {atCurrent ? (
+        <section className="grid gap-2 rounded-md border p-3">
+          <p className="text-sm text-muted-foreground">{t("remindHint")}</p>
+          <ActionForm action={queueRemindersAction} submitLabel={t("remind")} doneLabel={t("reminded")} variant="outline" />
+        </section>
+      ) : null}
     </div>
   );
 }

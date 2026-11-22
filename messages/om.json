@@ -109,7 +109,10 @@
     "late": "Barfate, {amount}",
     "owes": "Liqii {amount}",
     "bill": "Kiraa ji'a kanaa gaafadhu",
-    "billed": "Kiraan hundaaf gaafatameera."
+    "billed": "Kiraan hundaaf gaafatameera.",
+    "remind": "Yaadachiisa kiraa amma ergi",
+    "reminded": "Yaadachiisni tarreeffameera. Kireeffataan tokkoon tokkoon yaadachiisa al tokko qofa argata.",
+    "remindHint": "Kireeffattoonni lakkoofsa bilbilaa qaban guyyaa kiraan itti kaffalamu dura guyyaa 3 fi guyyaa sana SMS argatu."
   },
   "settings": {
     "title": "Qindaa'ina",

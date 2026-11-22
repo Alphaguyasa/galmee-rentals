@@ -213,6 +213,13 @@ export async function endLease(input: { lease: string; end: string }): Promise<R
   return error ? fail(error) : { ok: true, data: undefined };
 }
 
+/** Queues today's SMS reminders (3 days before and on the due date); each goes out once. */
+export async function queueReminders(): Promise<Result<number>> {
+  const supabase = await createClient();
+  const { data, error } = await supabase.rpc("rn_queue_reminders");
+  return error ? fail(error) : { ok: true, data };
+}
+
 export async function generateInvoices(): Promise<Result<number>> {
   const supabase = await createClient();
   const { data, error } = await supabase.rpc("rn_generate_invoices");
